@@ -3,13 +3,40 @@
   <head>
     <meta charset="utf-8">
     <title>Test</title>
+    <style media="screen">
+      .header {
+        color: red;
+      }
+      .name{
+        color: blue;
+      }
+      .sum{
+        color: green;
+      }
+    </style>
+
   </head>
   <body>
-    <ul>
-      <li>1</li>
-      <li>2</li>
-      <li>3</li>
-      <li>4</li>
-    </ul>
+    <h1 class="header">Hello</h1>
+    <h2 class="name">My name</h2>
+    <h3 class ="plus"></h3>
+    <h4 class="sum"></h4>
+    <h5 class="add-text"></h5>
+    <script type="text/javascript">
+      let myHeader = document.querySelector(".header")
+        myHeader.innerText = "Hello world"
+      let myName = document.querySelector(".name")
+        myName.innerText = "oldestDjunior"
+      let myPlus = document.querySelector(".plus")
+        myPlus.innerText = 65+33
+      let n1 = 10
+      let n2 = 15
+      let sum = n1 + n2
+      let sumElement = document.querySelector(".sum")
+        sumElement.innerText = sum
+      let addText = document.querySelector(".add-text")
+      let fullName = ``
+      addText.innerText = fullName
+    </script>
   </body>
 </html>
