@@ -1,17 +1,12 @@
 n = int(input())
 mas = [[int(j) for j in input().split()] for i in range(n)]
-priz = True
+for i in range(n//2):
+    mas[i], mas[n-i-1] = mas[n-i-1], mas[i]
+
 for i in range(n):
-    if priz == False:
-        break
-    else:
-        for j in range(n):
-            if mas[i][j] == mas[j][i]:
-                priz = True
-            else:
-                priz = False
-                break
-if priz == True:
-    print('YES')
-else:
-    print('NO')
+    for j in range(n):
+        print(mas[i][j], end=' ')
+    print()
+
+
+
