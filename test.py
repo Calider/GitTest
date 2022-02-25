@@ -3,35 +3,41 @@ n = int(vvod[0])
 m = int(vvod[1])
 nn = 1
 mas = [[0 for j in range(m)] for i in range(n)]
-for j in range(m):
-    mas[0][j] = nn
-    nn += 1
-i = 0
-j = 0
-mn = n
-nm = m
-while nn <= n * m:
-    for i in range(n):
-        if mas[i][m - 1] == 0:
-            mas[i][m - 1] = nn
+scol = 0
+endcol = m - 1
+srow = 0
+endrow = n - 1
+if n != 1 and m != 1:
+    while nn != n * m + 1:
+        for i in range(scol, endcol + 1):
+            mas[srow][i] = nn
             nn += 1
-    for j in range(m):
-        if mas[n - 1][m-j-1] == 0:
-            mas[n - 1][m-j-1] = nn
+        srow +=1
+        for j in range(srow, endrow + 1):
+            mas[j][endcol] = nn
             nn += 1
-    for i in range(n - 1):
-        if mas[i - n + 1][mn - n] == 0:
-            mas[i - n + 1][mn - n] = nn
+        endcol -= 1
+        for i in range(endcol, scol - 1, -1):
+            mas[endrow][i] = nn
             nn += 1
-    for j in range(m - 1):
-        if mas[nm - n - 1][j] == 0:
-            mas[nm - n - 1][j] = nn
+        endrow -=1
+        for j in range(endrow, srow - 1, -1):
+            mas[j][scol] = nn
             nn += 1
-    n -= 2
-    m -= 2
+        scol += 1
+elif n == 1:
+    for i in range(m):
+        mas[0][i] = nn
+        nn += 1
+else:
+    for i in range(m):
+        for j in range(n):
+            mas[j][0] = nn
+            nn += 1
+
 def print_matrix(matrix):
-    for i in range(mn):
-        for j in range(nm):
+    for i in range(n):
+        for j in range(m):
             print(str(matrix[i][j]).ljust(3), end='')
         print()
 
