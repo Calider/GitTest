@@ -6,8 +6,8 @@ for i in s:
         result[i] = result.get(i, s.count(i))
 minvalue = min(result.values())
 minkey = min(result)
-for key, value in result.items():
-    if value == minvalue and key <= minkey:
+for key, value in sorted(result.items(), reverse=True):
+    if value == minvalue:
         minvalue = value
         minkey = key
 print(minkey)
