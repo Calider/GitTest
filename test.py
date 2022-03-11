@@ -1,44 +1,41 @@
-vvod = input().split()
-n = int(vvod[0])
-m = int(vvod[1])
-nn = 1
-mas = [[0 for j in range(m)] for i in range(n)]
-scol = 0
-endcol = m - 1
-srow = 0
-endrow = n - 1
-if n != 1 and m != 1:
-    while nn != n * m + 1:
-        for i in range(scol, endcol + 1):
-            mas[srow][i] = nn
-            nn += 1
-        srow +=1
-        for j in range(srow, endrow + 1):
-            mas[j][endcol] = nn
-            nn += 1
-        endcol -= 1
-        for i in range(endcol, scol - 1, -1):
-            mas[endrow][i] = nn
-            nn += 1
-        endrow -=1
-        for j in range(endrow, srow - 1, -1):
-            mas[j][scol] = nn
-            nn += 1
-        scol += 1
-elif n == 1:
-    for i in range(m):
-        mas[0][i] = nn
-        nn += 1
-else:
-    for i in range(m):
-        for j in range(n):
-            mas[j][0] = nn
-            nn += 1
+import re
+s = re.sub(r'[.,;:-?-!]', '', input()).lower().split()
+result = {}
+for i in s:
+    if i not in result:
+        result[i] = result.get(i, s.count(i))
+minvalue = min(result.values())
+minkey = min(result)
+for key, value in result.items():
+    if value == minvalue and key <= minkey:
+        minvalue = value
+        minkey = key
+print(minkey)
 
-def print_matrix(matrix):
-    for i in range(n):
-        for j in range(m):
-            print(str(matrix[i][j]).ljust(3), end='')
-        print()
 
-print_matrix(mas)
+
+# result = {value: key for key, value in result.items()}
+
+
+
+
+# text = 'footballcyberpunkextraterritorialityconversationalistblockophthalmoscopicinterdependencemamauserfff'
+# a = sorted([i for i in text])
+# result = {}
+# letters = []
+# counts = []
+# prez = 0
+# for i in range(len(a)):
+#     prez += 1
+#     if i + 1 != len(a) and a[i] != a[i + 1]:
+#         letters.append(a[i])
+#         counts.append(prez)
+#         prez = 0
+# result = dict(zip(letters, counts))
+
+
+# for i in s.split():
+#     if i not in result:
+#         result[i] = result.get(i, s.split().count(i))
+# result = {value: key for key, value in result.items()}
+# print(result[max(result)])
